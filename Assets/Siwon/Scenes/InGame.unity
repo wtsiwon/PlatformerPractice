@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 887673919}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887673916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 20, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 1279476447}
   - component: {fileID: 1279476449}
   - component: {fileID: 1279476448}
+  - component: {fileID: 1279476450}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -578,8 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  jumpVelocity: 20
-  airCountrolPercent: 1
+  jumpPower: 20
+  isGround: 0
+  jumpCount: 1
 --- !u!114 &1279476449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,3 +600,15 @@ MonoBehaviour:
   jumpButtonName: Jump
   reloadButtonName: Reload
   dashButtonName: Dash
+--- !u!114 &1279476450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279476441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214bff84de57d5f4294920252fd843ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
