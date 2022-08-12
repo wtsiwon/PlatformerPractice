@@ -48,10 +48,18 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void Jump()
     {
-        if (playerInput.jump == true && jumpCount == 1)
+        const float DISTANCE = 1f;
+
+
+        Debug.DrawRay(rb.position, new Vector3(0, -DISTANCE, 0), new Color(1, 0, 0));
+
+        RaycastHit2D ray = Physics2D.Raycast(rb.position, Vector2.down, DISTANCE, LayerMask.GetMask("Ground"));
+
+        if (playerInput.jump == true && ray.collider != null)
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jumpCount--;
+            print(jumpCount);
         }
     }
 }
