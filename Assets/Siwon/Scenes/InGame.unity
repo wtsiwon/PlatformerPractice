@@ -438,7 +438,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 11
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -582,6 +582,7 @@ MonoBehaviour:
   jumpPower: 20
   isGround: 0
   jumpCount: 1
+  isJump: 0
 --- !u!114 &1279476449
 MonoBehaviour:
   m_ObjectHideFlags: 0

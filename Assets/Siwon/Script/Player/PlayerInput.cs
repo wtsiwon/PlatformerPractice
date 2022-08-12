@@ -23,6 +23,12 @@ public class PlayerInput : MonoBehaviour
     public bool jump { get; private set; }
     public bool attack { get; private set; }
 
+    private PlayerMovement playerMovement;
+
+    private void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     private void Update()
     {
@@ -41,7 +47,7 @@ public class PlayerInput : MonoBehaviour
     }
     private void Move()
     {
-        moveInput = new Vector2(Input.GetAxisRaw(moveHorizenAxisName), 0);
+        moveInput = new Vector2(Input.GetAxisRaw(moveHorizenAxisName),0);
     }
     private void Jump()
     {
@@ -53,6 +59,8 @@ public class PlayerInput : MonoBehaviour
         else if (Input.GetButtonUp(jumpButtonName))
         {
             jump = false;
+
+            playerMovement.isJump = false;
             print(jump);
         }
     }

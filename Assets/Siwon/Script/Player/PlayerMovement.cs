@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isGround;
 
     public int jumpCount = 1;
+    public bool isJump;
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -22,14 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetButton("Horizontal"))
-        //{
-        //    rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0) * moveSpeed;
-        //}
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-        //}
         Move(playerInput.moveInput);
         Jump();
     }
@@ -40,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="moveInput">¹«½¼Å°°¡ ´­·È³ª</param>
     public void Move(Vector2 moveInput)
     {
-        rb.velocity = moveInput * moveSpeed;
+        rb.velocity = new Vector2(moveInput.x * moveSpeed,rb.velocity.y);
     }
 
     /// <summary>
@@ -55,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit2D ray = Physics2D.Raycast(rb.position, Vector2.down, DISTANCE, LayerMask.GetMask("Ground"));
 
-        if (playerInput.jump == true && ray.collider != null)
+        if (playerInput.jump && ray.collider != null && isJump == false)
         {
+            rb.velocity = new Vector2(rb.velocity.x,0);
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jumpCount--;
-            print(jumpCount);
+            isJump = true;
         }
     }
 }
