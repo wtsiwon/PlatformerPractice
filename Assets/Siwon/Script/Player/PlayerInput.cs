@@ -22,6 +22,8 @@ public class PlayerInput : MonoBehaviour
     public Vector2 moveInput { get; private set; }
     public bool jump { get; private set; }
     public bool attack { get; private set; }
+    public bool dash { get; private set; }
+
 
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
@@ -40,11 +42,9 @@ public class PlayerInput : MonoBehaviour
         }
 
         #region PlayerInput
-
         Move();
         Jump();
         Attack();
-
         #endregion
 
     }
@@ -73,13 +73,27 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButtonDown(fireButtonName))
         {
             attack = true;
-            print(attack);
+            print("공격" + attack);
         }
         else if (Input.GetButtonUp(fireButtonName))
         {
             attack = false;
-            print(attack);
+            print("공격" + attack);
+            playerAttack.isAttacking = false;
         }
-        
+
+    }
+
+    private void Dash()
+    {
+        if (Input.GetButtonDown(dashButtonName) && Input.GetButtonDown(moveHorizenAxisName))
+        {
+            dash = true;
+            print("Dash" + dash);
+        }
+        else
+        {
+            
+        }
     }
 }
