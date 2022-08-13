@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInput playerInput;
 
     [Tooltip("공격 딜래이")]
-    public float atkDelay = 0.5f;
+    public float atkDelay = 0.2f;
 
     [Tooltip("공격을 하고 있는가?")]
     public bool isAttacking;
@@ -30,6 +30,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if(playerInput.attack == true && isAttacking == false)
         {
+            print("공격");
+            sword.SetActive(true);
             StartCoroutine(CAttackDelay());
         }
     }
@@ -37,5 +39,7 @@ public class PlayerAttack : MonoBehaviour
     {
         isAttacking = true;
         yield return new WaitForSeconds(atkDelay);
+        sword.SetActive(false);
+        isAttacking = false;
     }
 }

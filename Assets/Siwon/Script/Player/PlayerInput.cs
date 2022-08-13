@@ -24,10 +24,12 @@ public class PlayerInput : MonoBehaviour
     public bool attack { get; private set; }
 
     private PlayerMovement playerMovement;
+    private PlayerAttack playerAttack;
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     private void Update()
