@@ -41,13 +41,14 @@ public class PlayerInput : MonoBehaviour
 
         Move();
         Jump();
+        Attack();
 
         #endregion
 
     }
     private void Move()
     {
-        moveInput = new Vector2(Input.GetAxisRaw(moveHorizenAxisName),0);
+        moveInput = new Vector2(Input.GetAxisRaw(moveHorizenAxisName), 0);
     }
     private void Jump()
     {
@@ -63,5 +64,20 @@ public class PlayerInput : MonoBehaviour
             playerMovement.isJump = false;
             print(jump);
         }
+    }
+
+    private void Attack()
+    {
+        if (Input.GetButtonDown(fireButtonName))
+        {
+            attack = true;
+            print(attack);
+        }
+        else if (Input.GetButtonUp(fireButtonName))
+        {
+            attack = false;
+            print(attack);
+        }
+        
     }
 }

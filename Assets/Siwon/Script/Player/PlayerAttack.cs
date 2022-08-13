@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private PlayerInput playerInput;
+
+    [Tooltip("공격 딜래이")]
+    public float atkDelay = 0.5f;
+
+    [Tooltip("공격을 하고 있는가?")]
+    public bool isAttacking;
+
+    [Tooltip("칼")]
+    public GameObject sword;
     void Start()
     {
-        
+        playerInput = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        #region
+        Attack();
+        #endregion
+    }
+
+    private void Attack()
+    {
+        if(playerInput.attack == true && isAttacking == false)
+        {
+            StartCoroutine(CAttackDelay());
+        }
+    }
+    private IEnumerator CAttackDelay()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(atkDelay);
     }
 }
