@@ -40,6 +40,5 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         yield return new WaitForSeconds(atkDelay);
         sword.SetActive(false);
-        isAttacking = false;
     }
 }
