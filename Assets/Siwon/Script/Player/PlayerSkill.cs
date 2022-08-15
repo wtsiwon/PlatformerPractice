@@ -6,11 +6,15 @@ public class PlayerSkill : MonoBehaviour
 {
     public float dmg;
 
-    public float skillDel;
+    public float skillDel = 1.5f;
 
     public float currentDel;
 
     public float dashdistance;
+
+    public bool isDashing;
+
+    public float dashTime = 0.2f;
     private PlayerInput playerInput;
     private Rigidbody2D rb;
 

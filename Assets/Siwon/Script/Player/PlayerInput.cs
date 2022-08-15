@@ -79,7 +79,6 @@ public class PlayerInput : MonoBehaviour
         {
             attack = false;
             print("АјАн" + attack);
-            playerAttack.isAttacking = false;
         }
 
     }
