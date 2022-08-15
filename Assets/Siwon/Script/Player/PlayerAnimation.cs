@@ -12,7 +12,7 @@ public class PlayerAnimation : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerInput playerInput;
 
-    EPlayerDir playerDir;
+    private EPlayerDir playerDir;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,7 +21,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        MoveAnimationFlip();
+        MoveAnimation();
     }
     private void MoveAnimationFlip()
     {
@@ -29,16 +29,27 @@ public class PlayerAnimation : MonoBehaviour
         {
             if (Input.GetAxisRaw(playerInput.moveHorizenAxisName) == 1)
             {
+                if (Input.GetAxisRaw(playerInput.moveHorizenAxisName) == -1)
+                {
+                    playerDir = EPlayerDir.Left;
+                }
                 playerDir = EPlayerDir.Right;
                 print(playerDir);
             }
-            else if(Input.GetAxisRaw(playerInput.moveHorizenAxisName) == -1)
+            else if (Input.GetAxisRaw(playerInput.moveHorizenAxisName) == -1)
             {
+                if (Input.GetAxisRaw(playerInput.moveHorizenAxisName) == 1)
+                {
+                    playerDir = EPlayerDir.Right;
+                }
                 playerDir = EPlayerDir.Left;
                 print(playerDir);
             }
         }
-        transform.rotation = new Quaternion(transform.rotation.x, (float)playerDir, transform.rotation.z ,transform.rotation.w);
+        transform.rotation = new Quaternion(transform.rotation.x, (float)playerDir, transform.rotation.z, transform.rotation.w);
     }
-
+    private void MoveAnimation()
+    {
+        
+    }
 }

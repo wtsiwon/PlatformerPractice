@@ -2,13 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct PlayerCondition
-{
-    public bool isStun;
-    public bool isJump;
-    public bool isMove;
-}
+
 public class PlayerInput : MonoBehaviour
 {
     public string moveHorizenAxisName = "Horizontal";
@@ -26,12 +20,12 @@ public class PlayerInput : MonoBehaviour
 
 
     private PlayerMovement playerMovement;
-    private PlayerAttack playerAttack;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        playerAttack = GetComponent<PlayerAttack>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -42,15 +36,18 @@ public class PlayerInput : MonoBehaviour
         }
 
         #region PlayerInput
+
         Move();
         Jump();
         Attack();
+        Dash();
+
         #endregion
 
     }
     private void Move()
     {
-        moveInput = new Vector2(Input.GetAxisRaw(moveHorizenAxisName), 0);
+        moveInput = new Vector2(Input.GetAxisRaw(moveHorizenAxisName),rb.velocity.y);
     }
     private void Jump()
     {
@@ -85,14 +82,15 @@ public class PlayerInput : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetButtonDown(dashButtonName) && Input.GetButtonDown(moveHorizenAxisName))
+        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift))
         {
             dash = true;
             print("Dash" + dash);
         }
-        else
+        else if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
         {
-            
+            dash = true;
+            print("Dash" + dash);
         }
     }
 }

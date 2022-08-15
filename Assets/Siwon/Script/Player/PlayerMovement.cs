@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct PlayerMoveConition
+{
+
+}
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;

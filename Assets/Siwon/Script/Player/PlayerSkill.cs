@@ -45,11 +45,10 @@ public class PlayerSkill : MonoBehaviour
         {
             print("Dash");
             rb.velocity = new Vector2(rb.velocity.x,0);
-            Vector3.Lerp(playerInput.moveInput, new Vector3(playerInput.moveInput.x, playerInput.moveInput.x + dashdistance,0),0.2f);
+            transform.position = Vector3.Lerp(playerInput.moveInput, new Vector3(playerInput.moveInput.x, playerInput.moveInput.x + dashdistance,0),0.2f);
             currentDel = 0;
         }
 
     }
-
 
 }
